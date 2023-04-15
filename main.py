@@ -50,7 +50,7 @@ async def webhook(request: Request):
         output_data = handle_alerts(data)
         response = httpx.post(
             os.getenv("WEBHOOK_SEND_URL"),
-            data=json.dumps(data),
+            data=json.dumps(output_data),
             headers={"Content-Type": "application/json"},
         )
         
