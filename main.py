@@ -43,6 +43,13 @@ async def webhook(request: Request):
         # print(data)
         from util import parse_value_string
         # Return the JSON data
+        
+        response = httpx.post(
+            os.getenv("WEBHOOK_SEND_URL"),
+            data=data,
+            headers={"Content-Type": "application/json"},
+        )
+        
         return {
             "message" : "Success",
             "data" : handle_alerts(data)
