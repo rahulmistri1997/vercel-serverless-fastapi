@@ -47,6 +47,7 @@ async def webhook(request: Request):
         from util import parse_value_string
         # Return the JSON data
         
+        output_data = handle_alerts(data)
         response = httpx.post(
             os.getenv("WEBHOOK_SEND_URL"),
             data=json.dumps(data),
@@ -55,5 +56,5 @@ async def webhook(request: Request):
         
         return {
             "message" : "Success",
-            "data" : handle_alerts(data)
+            "data" : output_data
         }
