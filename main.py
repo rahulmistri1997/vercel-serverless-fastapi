@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Request
 import os
+import json
 import httpx
 
 app = FastAPI()
@@ -48,7 +49,7 @@ async def webhook(request: Request):
         
         response = httpx.post(
             os.getenv("WEBHOOK_SEND_URL"),
-            data=data,
+            data=json.dumps(data),
             headers={"Content-Type": "application/json"},
         )
         
