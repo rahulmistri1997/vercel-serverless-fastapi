@@ -29,7 +29,7 @@ def handle_alerts(data: list):
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Hello World stage"}
 
 
 @app.get("/hello/{name}")
